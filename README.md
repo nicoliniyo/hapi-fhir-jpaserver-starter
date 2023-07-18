@@ -1,3 +1,42 @@
+# Modificado para tener autenticacion basica
+
+Modificado para que cada llamada rest debe utilizar estas credenciales
+
+## Ejecutar con:
+```agsl
+mvn clean spring-boot:run -Pboot
+```
+
+### Endpoint metadata
+Curl o postman para probar el endpoint
+```agsl
+localhost:8080/fhir/metadata
+```
+
+## Version FHIR
+```agsl
+R5
+```
+
+## Version de Java
+```agsl
+Este servidor utiliza al menos java-jdk-17
+```
+
+### Credenciales estaticas
+```agsl
+usuario: nicolai
+contrasena: nicolaiElMejorAvenger
+```
+
+### Configuracicon en application.yml
+Para cambiar estas credenciales
+```
+basicAuth: true
+basicAuthUsername: nicolai
+basicAuthPassword: nicolaiElMejorAvenger
+```
+
 # HAPI-FHIR Starter Project
 
 This project is a complete starter project you can use to deploy a FHIR server using HAPI FHIR JPA.

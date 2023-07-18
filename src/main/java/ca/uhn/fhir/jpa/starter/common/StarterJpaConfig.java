@@ -40,6 +40,7 @@ import ca.uhn.fhir.jpa.search.DatabaseBackedPagingProvider;
 import ca.uhn.fhir.jpa.search.IStaleSearchDeletingSvc;
 import ca.uhn.fhir.jpa.search.StaleSearchDeletingSvcImpl;
 import ca.uhn.fhir.jpa.starter.AppProperties;
+import ca.uhn.fhir.jpa.starter.BasicStaticAuthInterceptor;
 import ca.uhn.fhir.jpa.starter.annotations.OnCorsPresent;
 import ca.uhn.fhir.jpa.starter.annotations.OnImplementationGuidesPresent;
 import ca.uhn.fhir.jpa.starter.common.validation.IRepositoryValidationInterceptorFactory;
@@ -416,6 +417,15 @@ public class StarterJpaConfig {
 		if (!theIpsOperationProvider.isEmpty()) {
 			fhirServer.registerProvider(theIpsOperationProvider.get());
 		}
+
+		ourLog.info("Auth config: {},{},{}", appProperties.getBasicAuth(), appProperties.getBasicAuthUsername(), appProperties.getBasicAuthPassword());
+		if(appProperties.getBasicAuth()){
+			fhirServer.registerInterceptor(
+				new BasicStaticAuthInterceptor(
+					appProperties.getBasicAuthUsername(),
+					appProperties.getBasicAuthPassword()));
+		}
+
 
 		return fhirServer;
 	}

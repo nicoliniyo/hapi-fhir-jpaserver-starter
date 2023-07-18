@@ -91,7 +91,37 @@ public class AppProperties {
   
   private final List<String> custom_interceptor_classes = new ArrayList<>();
 
-  public List<String> getCustomInterceptorClasses() {
+	private Boolean basicAuth = true;
+
+	private String basicAuthUsername;
+
+	private String basicAuthPassword;
+
+	public Boolean getBasicAuth() {
+		return basicAuth;
+	}
+
+	public void setBasicAuth(Boolean basicAuth) {
+		this.basicAuth = basicAuth;
+	}
+
+	public String getBasicAuthUsername() {
+		return basicAuthUsername;
+	}
+
+	public void setBasicAuthUsername(String basicAuthUsername) {
+		this.basicAuthUsername = basicAuthUsername;
+	}
+
+	public String getBasicAuthPassword() {
+		return basicAuthPassword;
+	}
+
+	public void setBasicAuthPassword(String basicAuthPassword) {
+		this.basicAuthPassword = basicAuthPassword;
+	}
+
+	public List<String> getCustomInterceptorClasses() {
     return custom_interceptor_classes;
   }
 
